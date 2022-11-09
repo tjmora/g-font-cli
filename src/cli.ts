@@ -30,7 +30,10 @@ async function getPage(
 ): Promise<{ success: boolean; message: string }> {
   let result = "";
   return new Promise((resolve) => {
-    https.get(url, (response) => {
+    const options = {
+      headers: {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"}
+    };
+    https.get(url, options, (response) => {
       if (response.statusCode !== 200) {
         resolve({
           success: false,
