@@ -1,0 +1,30 @@
+{
+  "name": "@tjmora/g-font-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool for downloading Google Fonts",
+  "main": "dist/cli.js",
+  "scripts": {
+    "build": "npx tsc",
+    "g-font": "node dist/cli.js"
+  },
+  "keywords": [
+    "google fonts",
+    "google fonts download",
+    "self-hosted google fonts",
+    "google fonts cli"
+  ],
+  "author": "TJ Mora",
+  "license": "MIT",
+  "homepage": "https://github.com/tjmora/g-font-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tjmora/g-font-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/tjmora/g-font-cli/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "typescript": "^4.8.4"
+  }
+}
