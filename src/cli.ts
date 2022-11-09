@@ -145,20 +145,26 @@ async function downloadFont(
       );
       if (!success) {
         console.log(message);
+        console.log("Operation aborted.");
         break;
       }
       console.log(message);
-      if (
-        !fs.existsSync(path.join(destPath, fontFiles[i].fontName, "LICENSE"))
-      ) {
-        const licenseContent =
-          gFontCopyrightData[fontFiles[i].fontName][1] +
-          "\n\n" +
-          fontLicenseTexts[gFontCopyrightData[fontFiles[i].fontName][0]];
-        fs.writeFileSync(
-          path.join(destPath, fontFiles[i].fontName, gFontCopyrightData[fontFiles[i].fontName][0] + ".txt"),
-          licenseContent
-        );
+      if(gFontCopyrightData[fontFiles[i].fontName] !== undefined) {
+        if (
+          !fs.existsSync(path.join(destPath, fontFiles[i].fontName, gFontCopyrightData[fontFiles[i].fontName][0] + ".txt"))
+        ) {
+          const licenseContent =
+            gFontCopyrightData[fontFiles[i].fontName][1] +
+            "\n\n" +
+            fontLicenseTexts[gFontCopyrightData[fontFiles[i].fontName][0]];
+          fs.writeFileSync(
+            path.join(destPath, fontFiles[i].fontName, gFontCopyrightData[fontFiles[i].fontName][0] + ".txt"),
+            licenseContent
+          );
+        }
+      }
+      else {
+        console.log(`The font ${fontFiles[i].fontName} doesn't have a copyright information. No copyright notice generated for the font.`);
       }
     }
 

@@ -17,7 +17,7 @@ In your package.json, add the following script:
   ...
   "scripts": {
     ...
-    "g-font": "node node_modules/@tjmora/g-font-cli/dist/cli.js"
+    "g-font": "node ./node_modules/@tjmora/g-font-cli/dist/cli.js"
   }
   ...
 }
@@ -35,12 +35,15 @@ Make sure to surround the installation path and URL with quote marks. For exampl
 npm run g-font download "public/fonts" "https://fonts.googleapis.com/css2?family=Roboto&family=Lato:ital,wght@1,400&family=Raleway:wght@300;400;700&display=swap"
 ```
 
+> **_NOTE:_** Appropriate copyright/license notices are also generated for each font.
+
 Once downloaded, add the following stylesheet `<link>` tag to your app, document, or 
-layout file/component (within `<head>` tags).
+layout file/component (within `<head>` tags). The `href` attribute should point to the 
+index.css generated in the installation path.
 
 ```
 <link href="fonts/index.css" rel="stylesheet" />
 ```
 
-Replace the `href` attribute as needed. It should point to the index.css generated 
-in the installation path.
+If you still have the stylesheet `<link>` tags that point to the `<google_fonts_api_url>` 
+that you provided to the g-font CLI, you can now delete those.
