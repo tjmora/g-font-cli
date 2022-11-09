@@ -1,11 +1,11 @@
 {
   "name": "@tjmora/g-font-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A CLI tool for downloading Google Fonts",
-  "main": "dist/cli.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "test-download": "node ./dist/cli.js download 'test/fonts' 'https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,slnt,wdth,wght,GRAD@22.2,-5,130,600,100&family=Playfair+Display:ital,wght@1,700&family=Raleway:wght@800&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap'"
+    "test-download": "node ./dist/index.js download 'test/fonts' 'https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,slnt,wdth,wght,GRAD@22.2,-5,130,600,100&family=Playfair+Display:ital,wght@1,700&family=Raleway:wght@800&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap'"
   },
   "keywords": [
     "google fonts",

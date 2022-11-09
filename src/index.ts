@@ -6,6 +6,12 @@ import path from "path";
 import gFontCopyrightData from "./gFontCopyrightData";
 import fontLicenseTexts from "./fontLicenseTexts";
 
+const requestOptions = {
+  headers: {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+  }
+};
+
 const [, , ...args] = process.argv;
 
 interface IFontFile {
@@ -30,10 +36,7 @@ async function getPage(
 ): Promise<{ success: boolean; message: string }> {
   let result = "";
   return new Promise((resolve) => {
-    const options = {
-      headers: {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"}
-    };
-    https.get(url, options, (response) => {
+    https.get(url, requestOptions, (response) => {
       if (response.statusCode !== 200) {
         resolve({
           success: false,
@@ -57,7 +60,7 @@ async function downloadFont(
 ): Promise<{ success: boolean; message: string }> {
   const file = fs.createWriteStream(dest);
   return new Promise((resolve) => {
-    const request = https.get(url, (response) => {
+    const request = https.get(url, requestOptions, (response) => {
       if (response.statusCode !== 200) {
         resolve({
           success: false,
@@ -94,7 +97,7 @@ async function downloadFont(
   });
 }
 
-(async () => {
+export default async function cli (args: string[]) {
   if (!args.length) {
     console.log("No argument provided for the g-font/cli.");
     return;
@@ -179,4 +182,6 @@ async function downloadFont(
     console.log(`Unknown argument '${args[0]}' for the g-font/cli.`);
     return;
   }
-})();
+}
+
+cli(args);
